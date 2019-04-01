@@ -46,4 +46,11 @@ app.get('/logout', function(request, response){
   response.render('index');
 });
 
+app.get('/settings', function(request, response){
+  console.log('Request- settings');
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html')
+  response.render('settings');
+});
+
 */

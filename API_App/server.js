@@ -1,4 +1,4 @@
-/*app.get('/home', function(request, response){
+app.get('/home', function(request, response){
   console.log('Request- default route');
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
@@ -8,7 +8,7 @@
 app.get('/login', function(request, response){
   console.log('Request- login');
 
-  var data=Users.allUsers(function(rows){
+/*  var data=Users.allUsers(function(rows){
     var new_user=true;
     for(var i=0; i<rows.length;i++){
       if(request.query.player_name==rows[i]["name"]){
@@ -36,7 +36,7 @@ app.get('/login', function(request, response){
       response.setHeader('Content-Type', 'text/html');
       response.render('user_details',{user:user});
     }
-  });
+  });*/
 });
 
 app.get('/logout', function(request, response){
@@ -45,5 +45,3 @@ app.get('/logout', function(request, response){
   response.setHeader('Content-Type', 'text/html')
   response.render('index');
 });
-
-*/

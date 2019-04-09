@@ -3,7 +3,7 @@ var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('./client_secret.json');
 
 
-var doc = new GoogleSpreadsheet('1D4cOG9jV0L0UiuK4TEYpHTGgb_tizTMk4O3Hl4VlEq4');
+var doc = new GoogleSpreadsheet('');
 
 
 exports.createUser = function(user_email){

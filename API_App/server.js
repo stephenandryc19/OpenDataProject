@@ -1,3 +1,23 @@
+var express = require('express');
+var fs = require('fs');
+var favicon = require('serve-favicon');
+//this file should just be index, rules, stats, about, logout
+var app = express();
+var methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+app.use(express.static('public'));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+app.use(favicon(__dirname + '/public/images/logo.png'));
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.use(require('./controllers/user'));
+var Users = require(__dirname +'/models/Users');
+var port = process.env.PORT || 3000;
+app.listen(port);
+
+
 app.get('/home', function(request, response){
   console.log('Request- default route');
   response.status(200);

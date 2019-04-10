@@ -1,6 +1,6 @@
 var GoogleSpreadsheet = require('google-spreadsheet');
 
-var creds = require('./client_secret.json');
+var creds = require('./../../client_secret.json');
 
 
 var doc = new GoogleSpreadsheet('1nWx5MSPoFFttu9KqVhL0naXFff7KVD5BTjWzfQmjJvc');
@@ -32,9 +32,10 @@ function createKey(){
         numString=String.fromCharCode(num);
         keyString=keyString+num;
     }
-    else(){
+    else{
       numString=num.toString();
       keyString+=numString;
     }
   return(keyString);
+}
 }

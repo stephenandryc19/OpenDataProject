@@ -21,7 +21,7 @@ var port = process.env.PORT || 3000;
 app.listen(port);
 
 
-app.get('/home', function(request, response){
+app.get('/', function(request, response){
   console.log('Request- default route');
   response.status(200);
   response.setHeader('Content-Type', 'text/html')

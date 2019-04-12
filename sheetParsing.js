@@ -5,7 +5,7 @@ var creds = require('./client_secret.json');
 var doc = new GoogleSpreadsheet('1nWx5MSPoFFttu9KqVhL0naXFff7KVD5BTjWzfQmjJvc');
 //instantiates from spreadsheet class
 doc.useServiceAccountAuth(creds, function (err) {
-  doc.getRows(3/*sheet of the spreadsheet*/, function (err, rows) {
+  doc.getRows(1/*sheet of the spreadsheet*/, function (err, rows) {
   	for (var i = 0; i < rows.length; i ++) {
   		//row parsing beginning
   		var row = [];
@@ -21,18 +21,17 @@ doc.useServiceAccountAuth(creds, function (err) {
   				string = string + rows[i].text[j];
   			}
   		}
-  		row.push(string);
-  		//row parsing completed
-  		/*
-  		doc.addRow(3,row, function(err) {//objectify row as argument
-			if(err) {
-				console.log(err);//fix errors
-			}
-		});
-		*/
+  		console.log(string);
+      doc.addRow(3,{name:row[0],borough:row[10]}, function(err) {//objectify row as argument!!
+        //fix overflow problems
+  			if(err) {
+  				console.log(err);//fix errors
+  			}
+  		});
+  		
 	    //console.log(rows[i].text);//actual text of the row
-		//console.log(row);//parsed row array
-	}
-	//runs through each row of the column
+		  //console.log(row);//parsed row array
+	  }
+	  //runs through each row of the column
   });
 });

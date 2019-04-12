@@ -19,6 +19,7 @@ exports.createUser = function(user_email){
     }
 
   });
+  console.log("user created:"+user);
   return user;
   //fill
 }

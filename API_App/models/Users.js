@@ -9,6 +9,7 @@ var doc = new GoogleSpreadsheet('1nWx5MSPoFFttu9KqVhL0naXFff7KVD5BTjWzfQmjJvc');
 exports.createUser = function(user_email){
   console.log("Users.createUser"+user_email);
   var user_key=createKey();
+
   var user={
     email:user_email,
     key:user_key
@@ -25,10 +26,13 @@ exports.createUser = function(user_email){
 }
 
 function createKey(){
-  var keyString;
-  var numString;
+  console.log("create Key");
+  var keyString="";
+  var numString="";
   for(var i=0; i<7; i++){
+    console.log("keys progress:"+keyString);
     var num=Math.floor(Math.random() * 33) + 93;
+    console.log("num"+num);
     if(i%2==0){
         numString=String.fromCharCode(num);
         keyString=keyString+num;
@@ -37,6 +41,8 @@ function createKey(){
       numString=num.toString();
       keyString+=numString;
     }
+  }
+    console.log("keys:"+keyString);
   return(keyString);
-}
+
 }

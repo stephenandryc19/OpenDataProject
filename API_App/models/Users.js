@@ -14,13 +14,14 @@ exports.createUser = function(user_email){
     email:user_email,
     key:user_key
   };
+  doc.useServiceAccountAuth(creds,function(err){
   doc.addRow(5,user, function(err) {
     if(err) {
       console.log(err);
     }
-
   });
-  console.log("user created:"+user);
+});
+  console.log("user created:"+user.email);
   return user;
   //fill
 }
@@ -35,7 +36,8 @@ function createKey(){
     console.log("num"+num);
     if(i%2==0){
         numString=String.fromCharCode(num);
-        keyString=keyString+num;
+        console.log("numString"+numString);
+        keyString=keyString+numString;
     }
     else{
       numString=num.toString();

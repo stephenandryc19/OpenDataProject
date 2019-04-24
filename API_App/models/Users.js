@@ -8,23 +8,40 @@ var doc = new GoogleSpreadsheet('1nWx5MSPoFFttu9KqVhL0naXFff7KVD5BTjWzfQmjJvc');
 
 exports.createUser = function(user_email){
   console.log("Users.createUser"+user_email);
-  var user_key=createKey();
-
-  var user={
-    email:user_email,
-    key:user_key
-  };
-  doc.useServiceAccountAuth(creds,function(err){
-  doc.addRow(5,user, function(err) {
-    if(err) {
-      console.log(err);
+  var user=createBlankUser();
+  var allUsers= exports.allUsers(function(rows){
+    for(var i=0; i<rows.length; i++){
+      if(rows[i].email.trim()==user_email){
+       user={
+         email:user_email,
+         key:rows[i].key.trim()
+       }
+         console.log("userKey:"+user_key);
+     }
+      else{
+        var user_key=createKey();
+        user={
+          email:user_email,
+          key:user_key
+        }
+        console.log("userKey:"+user_key);
+        doc.useServiceAccountAuth(creds,function(err){
+        doc.addRow(5,user, function(err) {
+          if(err) {
+            console.log(err);
+          }
+        });
+      });
     }
-  });
-});
-  console.log("user created:"+user.email);
-  return user;
-  //fill
-}
+      console.log("user created:"+user.email);
+
+  }
+        //fill
+
+    });
+      return user;
+  }
+
 
 function createKey(){
   console.log("create Key");
@@ -48,3 +65,45 @@ function createKey(){
   return(keyString);
 
 }
+
+exports.allUsers= function(callback){//parameter of function is a function
+  console.log("WHAT IS THIS")
+ doc.useServiceAccountAuth(creds, function (err) {
+  //Get all of the rows from the spreadsheet.
+   doc.getRows(5, function (err, rows) {
+     console.log("STUFF"+rows[0].email);
+     callback(rows);
+   });
+ });
+}
+
+exports.getUser = function(user_id, callback) {
+  console.log("user requested Users.getUser: "+user_id+getTime());
+  var user = createBlankUser();
+  var all_users = exports.allUsers(function(rows){
+    for(var i=0; i<rows.length; i++){
+      if(rows[i].email.trim()==user_id){
+        user={
+          email:rows[i].email.trim,
+          key:rows[i].key.trim
+
+        }
+          console.log("right user");
+      }
+      else{
+        console.log("user_id issues");
+      }
+    }
+    console.log("Callback-"+user.name);
+    callback(user);
+  });
+}
+
+function createBlankUser(){
+  var user={
+      email:"",
+      key:"",
+
+    }
+    return user;
+  }

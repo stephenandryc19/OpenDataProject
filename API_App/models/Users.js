@@ -10,8 +10,10 @@ exports.createUser = function(user_email){
   console.log("Users.createUser"+user_email);
   var user=createBlankUser();
   var allUsers= exports.allUsers(function(rows){
+    var newUser=false;
     for(var i=0; i<rows.length; i++){
       if(rows[i].email.trim()==user_email){
+        newUser=true;
        user={
          email:user_email,
          key:rows[i].key.trim()

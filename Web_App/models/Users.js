@@ -17,3 +17,33 @@ exports.allUsers= function(callback){//parameter of function is a function
    });
  });
 }
+
+exports.getUser = function(user_id, callback) {
+  console.log("user requested Users.getUser: "+user_id+getTime());
+  var user = createBlankUser();
+  var all_users = exports.allUsers(function(rows){
+    for(var i=0; i<rows.length; i++){
+      if(rows[i].email.trim()==user_id){
+        user={
+          email:rows[i].email.trim,
+          key:rows[i].key.trim
+
+        }
+          console.log("right user");
+      }
+      else{
+        console.log("user_id issues");
+      }
+    }
+    console.log("Callback-"+user.name);
+    callback(user);
+  });
+}
+function createBlankUser(){
+  var user={
+      email:"",
+      key:"",
+
+    };
+    return user;
+  }

@@ -1,4 +1,11 @@
-/*
+
+var express = require('express');
+var router = express.Router();
+
+var Users = require('../models/Users');
+
+
+
 
 router.get('/searchset1', function(request, response){
   console.log('Request- search set 1');
@@ -7,6 +14,7 @@ router.get('/searchset1', function(request, response){
   response.render('index');
 });
 
+/*
 router.get('/searchset2', function(request, response){
   console.log('Request- search set 2');
   response.status(200);
@@ -31,3 +39,5 @@ router.delete('/mydata/:id', function(request, response){
 
 
 */
+
+module.exports = router;

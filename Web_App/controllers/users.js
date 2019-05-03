@@ -1,10 +1,17 @@
-/*router.get('/user/new',function(request, response){
+
+var express = require('express');
+var router = express.Router();
+
+var Users = require('../models/Users');
+
+router.get('/user/new',function(request, response){
   console.log('Request- /new user');
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render('user_details',{user:user});
 });
 
+/*
 router.post('/user', function(request,response){
 console.log("Post- new user");
 Users.createUser(request.body.name,request.body.password);
@@ -14,3 +21,4 @@ response.render('index');
 });
 
 */
+module.exports = router;

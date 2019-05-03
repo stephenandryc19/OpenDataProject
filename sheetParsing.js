@@ -52,42 +52,47 @@ doc.useServiceAccountAuth(creds, function (err) {
   });
   doc.getRows(2/*sheet of the spreadsheet*/, function (err, rows) {
     for (var i = 0; i < rows.length; i ++) {
-      console.log("Row "+i);
+      var parsedArray = [];
+      //console.log("Row "+i);
       if (rows[i].column4.length!=0){
-        console.log("Content "+rows[i].column4);
-      } else {
-        console.log("No content");
+        //console.log("Content "+rows[i].column4);
+        var rawArray = rows[i].column4.split(">");
+        //console.log(rawArray);
+        for (var j = 1; j < rawArray.length; j += 2) {
+          parsedArray.push(rawArray[j].split("<")[0].trim());
+        }
+        //console.log(parsedArray);
+        //[2] is percentage
+        //[4] is name
+        //[5] is borough
       }
-      //row parsing beginning
-      /*
-      var row = [];
-      var quoting = false;
-      var string = "";
-      for (var j = 0; j < rows[i].text.length; j ++) {
-        if (rows[i].text[j]=="\"") {
-          quoting = !quoting;
-        } else if ((!quoting)&&rows[i].text[j]==",") {
-          row.push(string);
-          string = "";
-        } else {
-          string = string + rows[i].text[j];
+      //console.log(parsedArray.length);
+      if (parsedArray.length != 0) {
+        if (parsedArray.length != 7) console.log(i+" parsed irregularly "+parsedArray.length);
+        else {
+          var elements = parsedArray[4].split(",");
+          var replacement = "";
+          for (var k = 0; k < elements.length; k ++) {
+            //if (k == 1) console.log("Comma name: "+i);
+            if (k > 0) replacement += "/";
+            replacement += elements[k];
+          }
+          parsedArray[4]=replacement;
+          attendanceRows.push(parsedArray);
         }
       }
-      if (row.length != 20) console.log(i+" parsed irregularly "+row.length);
-      else attendanceRows.push(row);
-      */
     }
     //runs through each row of the column
-    /*
+    attendanceRows.pop();//removes aggregate percentage at end
+    attendanceRows.shift();//removes header at front
     var csvOutput2 = "name,borough,attendancePercentage\n";
     for (var j = 0; j < attendanceRows.length; j ++) {
-      if (attendanceRows[j][0].length!=0||attendanceRows[j][10].length!=0||attendanceRows[j][3].length!=0) {
-        csvOutput2 += attendanceRows[j][0]+",";
-        csvOutput2 += attendanceRows[j][10]+",";
-        csvOutput2 += attendanceRows[j][3]+"\n";
+      if (attendanceRows[j][4].length!=0||attendanceRows[j][5].length!=0||attendanceRows[j][2].length!=0) {
+        csvOutput2 += attendanceRows[j][4]+",";
+        csvOutput2 += attendanceRows[j][5]+",";
+        csvOutput2 += attendanceRows[j][2]+"\n";
       }
     }
-    fs.writeFileSync("projectData.csv",csvOutput2);
-    */
+    fs.writeFileSync("attendanceData.csv",csvOutput2);
   });
 });

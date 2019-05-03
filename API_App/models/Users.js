@@ -43,6 +43,8 @@ exports.createUser = function(user_email, callback){
 
   else if(userExist==true){
       user=exports.getUser(user_email,function(user){
+        console.log("EMAIL"+user.email)
+          console.log("KEY"+user.key);
         callback(user);
       });
     }
@@ -101,8 +103,8 @@ exports.getUser = function(user_id, callback) {
     for(var i=0; i<rows.length; i++){
       if(rows[i].email.trim()==user_id){
         user={
-          email:rows[i].email.trim,
-          key:rows[i].key.trim
+          email:rows[i].email.trim(),
+          key:rows[i].key.trim()
 
         }
           console.log("right user");

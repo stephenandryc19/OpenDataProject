@@ -30,18 +30,23 @@ app.get('/', function(request, response){
 
 app.get('/login', function(request, response){
   console.log('Request- login');
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('user_details');
+});
 
-/*  var data=Users.allUsers(function(rows){
+/*app.post()
+var data=Users.allUsers(function(rows){
     var new_user=true;
     for(var i=0; i<rows.length;i++){
-      if(request.query.player_name==rows[i]["name"]){
+      if(request.query.email==rows[i]["email"]){
         new_user=false;
-        if(request.query.password==rows[i]["password"]){
+        if(request.query.key==rows[i]["key"]){
           var user_data={};
-          user_data.name=rows[i].name;
+          user_data.email=rows[i].email;
           response.status(200);
           response.setHeader('Content-Type', 'text/html')
-          response.render('game', {user:user_data});
+          response.render('', {user:user_data});
           break;
         }
         else{
@@ -59,9 +64,17 @@ app.get('/login', function(request, response){
       response.setHeader('Content-Type', 'text/html');
       response.render('user_details',{user:user});
     }
-  });*/
+  });
 });
+*/
 
+app.get('/settings', function(request,response){
+  console.log('Request- settings');
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html')
+  response.render('settings');
+
+});
 app.get('/logout', function(request, response){
   console.log('Request- logout');
   response.status(200);

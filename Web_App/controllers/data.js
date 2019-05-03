@@ -7,12 +7,7 @@ var Users = require('../models/Users');
 
 
 
-router.get('/searchset1', function(request, response){
-  console.log('Request- search set 1');
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('index');
-});
+
 
 /*
 router.get('/searchset2', function(request, response){

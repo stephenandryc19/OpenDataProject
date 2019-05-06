@@ -47,5 +47,18 @@ exports.findBoroughMatch = function (borough,callback) {
   });
 }
 
+exports.countBoroughMatches = function (borough,callback) {
+  doc.useServiceAccountAuth(creds, function (err) {
+    doc.getRows(4/*sheet of the spreadsheet*/, function (err, rows) {
+      var count = 0;
+      for (var i = 0; i < rows.length; i ++) {
+        if (rows[i].borough==borough.trim()) {
+          count ++;
+        }
+      }
+      callback(count);
+    });
+  });
+}
 
 module.exports = router;

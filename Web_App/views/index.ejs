@@ -13,9 +13,8 @@
    </head>
 
    <body>
+
       <% include global/header %>
-
-
 
       <!-- Page Content -->
         <div class="container">
@@ -26,30 +25,55 @@
           <div class="row">
             <div class="col-lg-4 mb-4">
               <div class="card h-100">
-                <h4 class="card-header">Enter Email</h4>
+                <h4 class="card-header">Search for School</h4>
                 <div class="card-body">
-                  <p class="card-text">Enter email here to get your API Key.</p>
+                  <p class="card-text">Search for school name</p>
                   <form action="/results" method="post">
          				<input type="text" id="enter_email_input" name="email_address" required>
                 </div>
                      <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" id="enter_email_button">Get Key</button>
+                        <button type="submit" class="btn btn-primary" id="enter_email_button">Return</button>
                      </div>
          			</form>
 
               </div>
             </div>
-            <div class="col-lg-4 mb-4">
-              <div class="card h-100">
-                <h4 class="card-header">How to Use</h4>
-                <div class="card-body">
-                  <p class="card-text">Enter your email and get a key. There's one unique key to every email address. No sort of password or authentication neccessary.</p>
-                </div>
-                <div class="card-footer">
-                  <a href="#" class="btn btn-primary invisible">Learn More</a>
-                </div>
-              </div>
-            </div>
+            <table class="table">
+             <thead>
+               <tr>
+                 <th scope="col">Borough</th>
+                 <th scope="col">Attendence Percentage</th>
+                 <th scope="col">Construction Percentage<th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>schoolName</td>
+                 <td>"Trinity"</td>
+                 <td> stuff </td>
+               </tr>
+               <tr>
+                 <td>schoolName</td>
+                 <td>"Trinity"</td>
+                 <td> stuff </td>
+               </tr>
+               <tr>
+                 <<td>schoolName</td>
+                 <td>"Trinity"</td>
+                 <td> stuff </td>
+               </tr>
+               <tr>
+                 <td>schoolName</td>
+                 <td>"Trinity"</td>
+                 <td> stuff </td>
+               </tr>
+               <tr>
+                 <td>schoolName</td>
+                 <td>"Trinity"</td>
+                 <td> stuff </td>
+               </tr>
+             </tbody>
+           </table>
             <div class="col-lg-4 mb-4">
               <div class="card h-100">
                 <h4 class="card-header">About the API</h4>
@@ -65,13 +89,7 @@
           <!-- /.row -->
       </div>
 
-      <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Steve, Mary Kate, and Anton, 2019. Idk how copyrighting stuff works.</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+      <% include global/footer %>
 
       <!-- Bootstrap core JavaScript -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

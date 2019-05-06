@@ -1,3 +1,26 @@
+var express = require('express');
+var fs = require('fs');
+var favicon = require('serve-favicon');
+//this file should just be index, rules, stats, about, logout
+var app = express();
+var methodOverride = require('method-override');
+
+app.use(methodOverride('_method'));
+app.use(express.static('public'));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+//a//pp.use(favicon(__dirname + '/public/images/logo.png'));
+app.use(express.json());
+app.use(express.urlencoded());
+
+app.use(require('./controllers/users'));
+app.use(require('./controllers/data'));
+
+var Users = require(__dirname +'/models/Users');
+var port = process.env.PORT || 3000;
+app.listen(port);
+
+
 app.get('/', function(request, response){
   console.log('Request- default route');
   response.status(200);
@@ -5,22 +28,27 @@ app.get('/', function(request, response){
   response.render('index');
 });
 
-
 app.get('/login', function(request, response){
   console.log('Request- login');
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('user_details');
+});
 
-  var data=Users.allUsers(function(rows){
+/*app.post()
+var data=Users.allUsers(function(rows){
+    var new_user=true;
     for(var i=0; i<rows.length;i++){
       if(request.query.email==rows[i]["email"]){
+        new_user=false;
         if(request.query.key==rows[i]["key"]){
           var user_data={};
           user_data.email=rows[i].email;
           response.status(200);
           response.setHeader('Content-Type', 'text/html')
-          response.render('game', {user:user_data});
+          response.render('', {user:user_data});
           break;
         }
-      }
         else{
           response.status(200);
           response.setHeader('Content-Type', 'text/html')
@@ -29,22 +57,27 @@ app.get('/login', function(request, response){
         }
       }
     }
+    if(new_user){
+      var user=Users.createUser("new","user");
+      console.log(user);
+      response.status(200);
+      response.setHeader('Content-Type', 'text/html');
+      response.render('user_details',{user:user});
+    }
   });
 });
-/*
+*/
 
+app.get('/settings', function(request,response){
+  console.log('Request- settings');
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html')
+  response.render('settings');
+
+});
 app.get('/logout', function(request, response){
   console.log('Request- logout');
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
   response.render('index');
 });
-
-app.get('/settings', function(request, response){
-  console.log('Request- settings');
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('settings');
-});
-
-*/

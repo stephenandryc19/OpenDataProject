@@ -43,10 +43,10 @@
               <div class="card h-100">
                 <h4 class="card-header">How to Use</h4>
                 <div class="card-body">
-                  <p class="card-text">Enter your email and get a key. There's one unique key to every email address. No sort of password or authentication neccessary.</p>
+                  <p class="card-text">Enter your email and get a key. There's one unique key to every email address. No sort of password or authentication neccessary. Click the button below to see all of the query requests and routes possible.</p>
                 </div>
                 <div class="card-footer">
-                  <a href="#" class="btn btn-primary invisible">Learn More</a>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Query Routes</a>
                 </div>
               </div>
             </div>
@@ -54,24 +54,72 @@
               <div class="card h-100">
                 <h4 class="card-header">About the API</h4>
                 <div class="card-body">
-                  <p class="card-text">Our API uses data from NYC Open Data and makes it possible to blah blah blah blah blah...</p>
+                  <p class="card-text">Our API uses data from NYC Open Data. We link school attendance percentages to the number of school projects currently underwork at each institution.</p>
                 </div>
                 <div class="card-footer">
                   <a href="#" class="btn btn-primary invisible">Learn More</a>
                 </div>
               </div>
             </div>
+
           </div>
           <!-- /.row -->
       </div>
 
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Query Routes</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <table class="table table-striped">
+                 <thead>
+                   <tr>
+                     <th scope="col">Paramater</th>
+                     <th scope="col">Returns</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tr>
+                     <td>schoolName</th>
+                     <td>"Trinity"</td>
+                   </tr>
+                   <tr>
+                     <td>schoolName</th>
+                     <td>"Trinity"</td>
+                   </tr>
+                   <tr>
+                     <td>schoolName</th>
+                     <td>"Trinity"</td>
+                   </tr>
+                   <tr>
+                     <td>schoolName</th>
+                     <td>"Trinity"</td>
+                   </tr>
+                   <tr>
+                     <td>schoolName</th>
+                     <td>"Trinity"</td>
+                   </tr>
+                 </tbody>
+               </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <% include global/footer %>
       <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Steve, Mary Kate, and Anton, 2019. Idk how copyrighting stuff works.</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+
 
       <!-- Bootstrap core JavaScript -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

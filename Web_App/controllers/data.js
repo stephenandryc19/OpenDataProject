@@ -45,16 +45,7 @@ exports.findBoroughMatch = function (borough,callback) {
   });
 }
 
-
 /*
-
-router.get('/searchset1', function(request, response){
-  console.log('Request- search set 1');
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('index');
-});
-
 router.get('/searchset2', function(request, response){
   console.log('Request- search set 2');
   response.status(200);
@@ -75,6 +66,4 @@ router.delete('/mydata/:id', function(request, response){
   response.setHeader('Content-Type', 'text/html')
   response.render('settings');
 });
-
-
 */

@@ -22,10 +22,11 @@ router.get('/logout',function(request, response){
 
 router.post('/results', function(request,response){
 console.log("Post- user w/API Key");
-var user=Users.createUser(request.body.email_address);
+var user=Users.createUser(request.body.email_address, function(user){
 response.status(200);
 response.setHeader('Content-Type', 'text/html')
 response.render('results',{user:user});
+});
 });
 
 module.exports = router;

@@ -30,7 +30,7 @@ var data=Users.allUsers(function(rows){
           response.setHeader('Content-Type', 'text/html')
           response.render('error');
           break;
-        }
+        }//anyway to get it to display your name instead of log in but
       }
     }
   });

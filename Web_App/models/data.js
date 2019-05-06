@@ -1,8 +1,9 @@
+
 var fs = require("fs");
 var express = require('express');
 var router = express.Router();
 
-var Users = require('../models/Users');
+
 //library to write text to a CSV
 var GoogleSpreadsheet = require('google-spreadsheet');
 //starts Google spreadsheet class

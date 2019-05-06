@@ -17,6 +17,7 @@ app.use(require('./controllers/users'));
 app.use(require('./controllers/data'));
 
 var Users = require(__dirname +'/models/Users');
+var Data = require('../models/data');
 var port = process.env.PORT || 3000;
 app.listen(port);
 
@@ -34,6 +35,14 @@ app.get('/login', function(request, response){
   response.setHeader('Content-Type', 'text/html');
   response.render('user_details');
 });
+app.get('/search', function(request, response){
+  console.log('Request- search');
+  var result= Data.findNameMatch(request.query.school);
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('results',{result:result});
+});
+
 
 /*app.post()
 var data=Users.allUsers(function(rows){

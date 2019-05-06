@@ -68,11 +68,12 @@ var data=Users.allUsers(function(rows){
 });
 */
 
-app.get('/settings', function(request,response){
+app.get('/:id/settings', function(request,response){
   console.log('Request- settings');
+  user=Users.getUser(request.params.id);
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render('settings');
+  response.render('settings',{user:user});
 
 });
 app.get('/logout', function(request, response){

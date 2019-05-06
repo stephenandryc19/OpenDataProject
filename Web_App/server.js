@@ -14,7 +14,6 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.use(require('./controllers/users'));
-app.use(require('./controllers/data'));
 
 var Users = require(__dirname +'/models/Users');
 var Data = require('../models/data');

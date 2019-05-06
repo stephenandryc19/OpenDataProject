@@ -1,4 +1,8 @@
 var fs = require("fs");
+var express = require('express');
+var router = express.Router();
+
+var Users = require('../models/Users');
 //library to write text to a CSV
 var GoogleSpreadsheet = require('google-spreadsheet');
 //starts Google spreadsheet class
@@ -44,26 +48,4 @@ exports.findBoroughMatch = function (borough,callback) {
     });
   });
 }
-
-/*
-router.get('/searchset2', function(request, response){
-  console.log('Request- search set 2');
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('index');
-});
-
-router.post('/savedata', function(request,response){
-console.log("Post- save data");
-response.status(200);
-response.setHeader('Content-Type', 'text/html')
-response.render('settings');
-});
-
-router.delete('/mydata/:id', function(request, response){
-  console.log('Request- search set 2');
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('settings');
-});
-*/
+module.exports = router;

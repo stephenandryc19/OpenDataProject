@@ -14,11 +14,10 @@ router.get('/user/new',function(request, response){
 router.post('/user', function(request,response){
 console.log("Post- user");
 var data=Users.allUsers(function(rows){
-    var new_user=true;
     for(var i=0; i<rows.length;i++){
-      if(request.query.email==rows[i]["email"]){
-        new_user=false;
-        if(request.query.key==rows[i]["key"]){
+      if(request.body.email==rows[i]["email"]){
+        console.log("email found"+request.body.email);
+        if(request.body.key==rows[i]["key"]){
           var user_data={};
           user_data.email=rows[i].email;
           response.status(200);
@@ -34,7 +33,7 @@ var data=Users.allUsers(function(rows){
         }
       }
     }
-    }
+  });
 });
 
 module.exports = router;

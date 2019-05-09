@@ -15,8 +15,8 @@ app.use(express.urlencoded());
 
 app.use(require('./controllers/users'));
 
-var Users = require(__dirname +'/models/Users');
-var Data = require('../models/data');
+var Users = require(__dirname + '/models/Users');
+var Data = require(__dirname + '/models/data');
 var port = process.env.PORT || 3000;
 app.listen(port);
 

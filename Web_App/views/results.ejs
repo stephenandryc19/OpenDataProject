@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      <title>Home</title>
+      <title>Search Results</title>
 
       <!-- Bootstrap core CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -21,23 +21,9 @@
 
           <h1 class="my-4"></h1>
 
-          <!-- Marketing Icons Section -->
-            <div class="row">
-               <div class="col-lg-4 mb-4">
-                  <div class="card h-100">
-                     <h4 class="card-header">Search for School</h4>
-                     <div class="card-body">
-                        <p class="card-text">Search for school name</p>
-                        <form action="/search" method="get">
-                        <input type="text" id="search_school_name" name="school" required>
-                     </div>
-                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary" id="search_school_button">Search</button>
-                     </div>
-                        </form>
-                  </div>
-               </div>
-            </div>
+          <form action="/save" method="post">
+             <button type="submit" class="btn btn-primary" id="save_school_button">Save Search</button>
+          <form action="/save" method="post">
 
             <table class="table">
              <thead>
@@ -46,7 +32,7 @@
                  <th scope="col">Borough</th>
                  <th scope="col">Attendence Percentage<th>
                </tr>
-             </thead>
+            </thead>
              <tbody>
                <tr>
                  <td>schoolName</td>

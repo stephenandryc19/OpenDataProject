@@ -38,14 +38,15 @@ app.get('/login', function(request, response){
   response.render('user_details');
 });
 
-app.get('/results', function(request, response){
-  console.log('Request- results');
-  dataFile.findNameMatch(request.params.id,function (result) {
-    response.status(200);
-    response.setHeader('Content-Type', 'text/html');
-    response.render('results',{result:result});
-  });
+app.get('/search/:id', function(request, response){
+  console.log('Request- login');
+  var user= Users.getUser(request.body.email);
+  response.status(200);
+  response.setHeader('Content-Type', 'text/html');
+  response.render('search',{user:user});
 });
+
+
 
 
 /*app.post()

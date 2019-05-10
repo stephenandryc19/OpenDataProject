@@ -1,8 +1,8 @@
-
 var express = require('express');
 var router = express.Router();
 
 var Users = require('../models/Users');
+var Data = require('../models/data');
 
 router.get('/user/new',function(request, response){
   console.log('Request- /new user');
@@ -22,7 +22,7 @@ var data=Users.allUsers(function(rows){
           user_data.email=rows[i].email;
           response.status(200);
           response.setHeader('Content-Type', 'text/html')
-          response.render('index');
+          response.render('search',{user:user_data});
           break;
         }
         else{
@@ -34,6 +34,39 @@ var data=Users.allUsers(function(rows){
       }
     }
   });
+});
+
+router.get('/results/:id', function(request, response){
+  console.log('Request- results');
+  console.log("SCHOOL"+request.query.school);
+  var user=Users.getUser(request.params.id, function(user){
+  Data.findNameMatch(request.query.school,function (result) {
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html');
+    response.render('results',{result:result,user:user});
+  });
+});
+});
+
+router.put('/save/:id', function(request, response){
+  console.log('Request- results');
+  console.log("ID"+request.params.id);
+  var user=Users.getUser(request.params.id);
+  var allUsers= exports.allUsers(function(rows){
+  for(var i=0; i<rows.length; i++){
+    if(rows[i].email==user.email){
+        rows[i].search_history=rows[i].search_history+request.query.school;
+    }
+    if(!rows[i].freq){
+                          rows[i].freq = 0;
+                        }
+                        rows[i].freq = JSON.parse(rows[i].freq)+1;
+                        rows[i].save();
+            }
+});
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html');
+    response.render('index');
 });
 
 module.exports = router;

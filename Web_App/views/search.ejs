@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-      <title>Search Results</title>
+      <title>Search</title>
 
       <!-- Bootstrap core CSS -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -13,35 +13,28 @@
    </head>
 
    <body>
-
       <% include global/header %>
 
-      <!-- Page Content -->
-        <div class="container">
+      <div class="container">
 
-          <h1 class="my-4"></h1>
-          <%console.log(user.name)%>
-        <form action="/save/<%=user_data.email%>?_method=PUT" method="post">
-             <button type="submit" class="btn btn-primary" id="save_school_button">Save Search</button>
-          <form action="/save" method="post">
+        <h1 class="my-4"></h1>
 
-            <div id="resultsTable">
-            <h2>Search Results</h2>
-            <table>
-              <tr>
-                <th class="top_row">School</th>
-                <th class="top_row">Borough</th>
-                <th class="top_row">Project</th>
-              </tr>
-              <%for(var i = 0; i< result.length; i++){%>
-                <tr>
-                  <td><%=result[i]["name"]%></td>
-                  <td><%=result[i]["borough"]%></td>
-                  <td><%=result[i]["description"]%></td>
-                </tr>
-              <%}%>
-            </table>
-            <br>
+        <!-- Marketing Icons Section -->
+          <div class="row">
+             <div class="col-lg-4 mb-4">
+                <div class="card h-100">
+                   <h4 class="card-header">Search for School</h4>
+                   <div class="card-body">
+                      <p class="card-text">Search for school name</p>
+                      <form action="/results/<%=user.email%>" method="get">
+                      <input type="text" id="search_school_name" name="school" required>
+                   </div>
+                   <div class="card-footer">
+                      <button type="submit" class="btn btn-primary" id="search_school_button">Search</button>
+                   </div>
+                      </form>
+                </div>
+             </div>
           </div>
 
       <% include global/footer %>

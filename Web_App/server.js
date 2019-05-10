@@ -24,7 +24,6 @@ app.listen(port);
 
 app.get('/', function(request, response){
   console.log('Request- default route');
-  console.log(dataFile);
   dataFile.listSchools(function (list){
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
@@ -38,18 +37,14 @@ app.get('/login', function(request, response){
   response.setHeader('Content-Type', 'text/html');
   response.render('user_details');
 });
-app.get('/search', function(request, response){
-  console.log('Request- search');
-  var result= Data.findNameMatch(request.query.school);
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html');
-  response.render('results',{result:result});
-});
+
 app.get('/results', function(request, response){
   console.log('Request- results');
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html');
-  response.render('results');
+  dataFile.findNameMatch(request.params.id,function (result) {
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html');
+    response.render('results',{result:result});
+  });
 });
 
 
@@ -86,7 +81,7 @@ var data=Users.allUsers(function(rows){
 });
 */
 
-app.get('settings/:id/', function(request,response){
+app.get('/settings/:id/', function(request,response){
   console.log('Request- settings');
   user=Users.getUser(request.params.id);
   response.status(200);

@@ -5,14 +5,6 @@ var creds = require('./../../client_secret.json');
 
 var doc = new GoogleSpreadsheet('1nWx5MSPoFFttu9KqVhL0naXFff7KVD5BTjWzfQmjJvc');
 
-exports.searchBySchool = function(keyword){
-  console.log("Data.seachBySchool"+keyword);
-  //fill
-}
-exports.searchByBorough = function(keyword){
-  console.log("Data.seachBySchool"+keyword);
-  //fill
-}
 
 
 exports.allProjectData= function(callback){//parameter of function is a function

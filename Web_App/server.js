@@ -24,9 +24,11 @@ app.listen(port);
 
 app.get('/', function(request, response){
   console.log('Request- default route');
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('index',{data:dataFile.listSchools()});
+  dataFile.listSchools(function (list){
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render('index',{data:list});
+  });
 });
 
 app.get('/login', function(request, response){
@@ -42,7 +44,7 @@ app.get('/search', function(request, response){
   response.setHeader('Content-Type', 'text/html');
   response.render('results',{result:result});
 });
-app.get('/results', function(request, response){
+app.get('/results/:id/:search', function(request, response){
   console.log('Request- results');
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
@@ -83,7 +85,7 @@ var data=Users.allUsers(function(rows){
 });
 */
 
-app.get('/:id/settings', function(request,response){
+app.get('settings/:id/', function(request,response){
   console.log('Request- settings');
   user=Users.getUser(request.params.id);
   response.status(200);

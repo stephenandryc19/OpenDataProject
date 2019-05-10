@@ -45,11 +45,11 @@ app.get('/search', function(request, response){
   response.setHeader('Content-Type', 'text/html');
   response.render('results',{result:result});
 });
-app.get('/results/:id/:search', function(request, response){
+app.get('/results', function(request, response){
   console.log('Request- results');
   response.status(200);
   response.setHeader('Content-Type', 'text/html');
-  response.render('results',{result:result});
+  response.render('results');
 });
 
 

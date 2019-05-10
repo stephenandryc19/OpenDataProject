@@ -28,7 +28,7 @@
                      <h4 class="card-header">Search for School</h4>
                      <div class="card-body">
                         <p class="card-text">Search for school name</p>
-                        <form action="/user/<%=user.email%>/results" method="get">
+                        <form action="/results" method="get">
                         <input type="text" id="search_school_name" name="school" required>
                      </div>
                      <div class="card-footer">
@@ -48,7 +48,7 @@
                <tr>
                  <th scope="col">School</th>
                  <th scope="col">Borough</th>
-                 <th scope="col">Attendence Percentage<th>
+                 <th scope="col">Project Description<th>
                </tr>
              </thead>
              <tbody>
@@ -56,8 +56,8 @@
                <% for (var i = 0; i < schoolsListed; i ++){ %>
                      <tr>
                        <td><%= data[i].name %></td>
-                       <td><% data[i].borough %></td>
-                       <td><% data[i].description %></td>
+                       <td><%= data[i].borough %></td>
+                       <td><%= data[i].description %></td>
                      </tr>
                <% }; %>
              </tbody>

@@ -27,12 +27,14 @@ exports.findNameMatch = function (name,callback) {
   });
 }
 
-exports.listSchools = function (callback) {
+exports.listSchools = function () {
   doc.useServiceAccountAuth(creds, function (err) {
     doc.getRows(3/*sheet of the spreadsheet*/, function (err, rows) {
+      var output = [];
       for (var i = 0; i < rows.length; i ++) {
-          callback(rows[i]);
+          output.push(rows[i]);
       }
+      return output;
     });
   });
 }

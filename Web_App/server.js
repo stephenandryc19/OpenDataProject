@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 //this file should just be index, rules, stats, about, logout
 var app = express();
 var methodOverride = require('method-override');
+var dataFile = require("./models/data.js");
 
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
@@ -25,7 +26,7 @@ app.get('/', function(request, response){
   console.log('Request- default route');
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render('index');
+  response.render('index',{data:dataFile.listSchools});
 });
 
 app.get('/login', function(request, response){

@@ -39,6 +39,10 @@
                </div>
             </div>
 
+
+
+
+
             <table class="table">
              <thead>
                <tr>
@@ -48,31 +52,14 @@
                </tr>
              </thead>
              <tbody>
-               <tr>
-                 <td>schoolName</td>
-                 <td>"Trinity"</td>
-                 <td> stuff </td>
-               </tr>
-               <tr>
-                 <td>schoolName</td>
-                 <td>"Trinity"</td>
-                 <td> stuff </td>
-               </tr>
-               <tr>
-                 <<td>schoolName</td>
-                 <td>"Trinity"</td>
-                 <td> stuff </td>
-               </tr>
-               <tr>
-                 <td>schoolName</td>
-                 <td>"Trinity"</td>
-                 <td> stuff </td>
-               </tr>
-               <tr>
-                 <td>schoolName</td>
-                 <td>"Trinity"</td>
-                 <td> stuff </td>
-               </tr>
+               <% var schoolsListed = 20; %>
+               <% for (var i = 0; i < schoolsListed; i ++){ %>
+                     <tr>
+                       <td><%= data[i]%></td>
+                       <td><% //schoolsListed[i].borough%></td>
+                       <td><% //schoolsListed[i].description%></td>
+                     </tr>
+               <% }; %>
              </tbody>
            </table>
 

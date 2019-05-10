@@ -27,9 +27,11 @@ exports.findNameMatch = function (name,callback) {
 exports.listSchools = function (callback) {
   doc.useServiceAccountAuth(creds, function (err) {
     doc.getRows(4/*sheet of the spreadsheet*/, function (err, rows) {
+      var output = [];
       for (var i = 0; i < rows.length; i ++) {
-          callback(rows[i]);
+          output.push(rows[i]);
       }
+      callback(output);
     });
   });
 }

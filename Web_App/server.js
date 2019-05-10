@@ -24,6 +24,7 @@ app.listen(port);
 
 app.get('/', function(request, response){
   console.log('Request- default route');
+  console.log(dataFile);
   dataFile.listSchools(function (list){
     response.status(200);
     response.setHeader('Content-Type', 'text/html')

@@ -33,10 +33,10 @@ exports.listSchools = function (callback) {
       for (var i = 0; i < rows.length; i ++) {
           output.push(rows[i]);
       }
+      console.log(output);
+      callback(output);
     });
   });
-  console.log(output);
-  callback(output);
 }
 
 exports.findBoroughMatch = function (borough,callback) {

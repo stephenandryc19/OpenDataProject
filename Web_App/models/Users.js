@@ -27,7 +27,8 @@ exports.createUser = function(user_email, callback){
      var user_key=createKey();
      user={
        email:user_email,
-       key:user_key
+       key:user_key,
+       history:""
      }
      console.log("userKey:"+user_key);
      doc.useServiceAccountAuth(creds,function(err){
@@ -103,9 +104,11 @@ exports.getUser = function(user_id, callback) {
   var all_users = exports.allUsers(function(rows){
     for(var i=0; i<rows.length; i++){
       if(rows[i].email.trim()==user_id){
+        console.log("HISTORY"+rows[i].history);
         user={
           email:rows[i].email.trim(),
-          key:rows[i].key.trim()
+          key:rows[i].key.trim(),
+          history:rows[i].history.trim()
 
         }
           console.log("right user");
@@ -124,6 +127,7 @@ function createBlankUser(){
   var user={
       email:"",
       key:"",
+      history:""
 
     }
     return user;

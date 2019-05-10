@@ -46,35 +46,6 @@
           </div>
         </div>
         <!-- /.row -->
-
-
-
-
-
-
-
-            <table class="table">
-             <thead>
-               <tr>
-                 <th scope="col">School</th>
-                 <th scope="col">Borough</th>
-                 <th scope="col">Project Description<th>
-               </tr>
-             </thead>
-             <tbody>
-               <% var schoolsListed = 20; %>
-               <% for (var i = 0; i < schoolsListed; i ++){ %>
-                     <tr>
-                       <td><%= data[i].name %></td>
-                       <td><%= data[i].borough %></td>
-                       <td><%= data[i].description %></td>
-                     </tr>
-               <% }; %>
-             </tbody>
-           </table>
-
-
-          <!-- /.row -->
       </div>
 
       <% include global/footer %>

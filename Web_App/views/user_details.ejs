@@ -23,51 +23,16 @@
          <div class="row">
             <div class="col-lg-4 mb-4">
                <div class="card h-100">
-                  <h4 class="card-header">Search for School</h4>
+                  <h4 class="card-header">Search History</h4>
                   <div class="card-body">
-                     <p class="card-text">Search for school name</p>
-                     <form action="/results" method="get">
-                     <input type="text" id="search_school_name" name="school" required>
+                    <div id="historyTable">
+                    <h2><%=user.email%>'s Search History</h2>
+                  <p><%=user.history%></p>
+                    <br>
                   </div>
-                  <div class="card-footer">
-                     <button type="submit" class="btn btn-primary" id="search_school_button">Search</button>
-                  </div>
-                     </form>
-               </div>
-            </div>
-         </div>
-
-     <!-- Page Content -->
-       <div class="container">
-
-         <h1 class="my-4"></h1>
-
-         <!-- Marketing Icons Section -->
-         <div class="row">
-           <div class="col-lg-4 mb-4">
-             <div class="card h-100">
-               <h4 class="card-header">Enter Key</h4>
-               <div class="card-body">
-
-
-
-
-                 <form action="/user" method="post">
-                    <p class="card-text">Email Address</p>
-               <input type="text" id="enter_email_input" name="email" required>
-                    <p class="card-text">API Key</p>
-                    <input type="text" id="enter_API_input" name="key" required>
-               </div>
-                    <div class="card-footer">
-                       <button type="submit" class="btn btn-primary" id="enter_API_button">Log In</button>
-                    </div>
-             </form>
-
-             </div>
-           </div>
-         </div>
          <!-- /.row -->
      </div>
+     <a id="home" href="/">Go Home</a>
 
      <% include global/footer %>
 

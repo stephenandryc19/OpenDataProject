@@ -39,23 +39,24 @@ var data=Users.allUsers(function(rows){
 router.get('/results/:id', function(request, response){
   console.log('Request- results');
   console.log("SCHOOL"+request.query.school);
+  var searchName=request.query.school;
   var user=Users.getUser(request.params.id, function(user){
   Data.findNameMatch(request.query.school,function (result) {
     response.status(200);
     response.setHeader('Content-Type', 'text/html');
-    response.render('results',{result:result,user:user});
+    response.render('results',{result:result,user:user,search:searchName});
   });
 });
 });
 
-router.put('/save/:id', function(request, response){
+router.put('/save/:id/:search', function(request, response){
   console.log('Request- results');
   console.log("ID"+request.params.id);
-  var user=Users.getUser(request.params.id);
-  var allUsers= exports.allUsers(function(rows){
+  console.log("SCHOOL"+request.params.search);
+  var allUsers= Users.allUsers(function(rows){
   for(var i=0; i<rows.length; i++){
-    if(rows[i].email==user.email){
-        rows[i].search_history=rows[i].search_history+request.query.school;
+    if(rows[i].email==request.params.id){
+        rows[i].history+=","+request.params.search;
     }
     if(!rows[i].freq){
                           rows[i].freq = 0;
@@ -64,9 +65,11 @@ router.put('/save/:id', function(request, response){
                         rows[i].save();
             }
 });
+var user=Users.getUser(request.params.id, function(user){
     response.status(200);
     response.setHeader('Content-Type', 'text/html');
-    response.render('index');
+    response.render('user_details',{user:user});
+  });
 });
 
 module.exports = router;

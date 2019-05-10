@@ -1,4 +1,3 @@
-
 var fs = require("fs");
 var express = require('express');
 var router = express.Router();
@@ -27,16 +26,17 @@ exports.findNameMatch = function (name,callback) {
   });
 }
 
-exports.listSchools = function () {
+exports.listSchools = function (callback) {
+  var output = [];
   doc.useServiceAccountAuth(creds, function (err) {
     doc.getRows(3/*sheet of the spreadsheet*/, function (err, rows) {
-      var output = [];
       for (var i = 0; i < rows.length; i ++) {
           output.push(rows[i]);
       }
-      return output;
     });
   });
+  console.log(output);
+  callback(output);
 }
 
 exports.findBoroughMatch = function (borough,callback) {

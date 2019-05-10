@@ -26,7 +26,7 @@ app.get('/', function(request, response){
   console.log('Request- default route');
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render('index',{data:dataFile.listSchools});
+  response.render('index',{data:dataFile.listSchools()});
 });
 
 app.get('/login', function(request, response){

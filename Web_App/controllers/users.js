@@ -36,12 +36,24 @@ var data=Users.allUsers(function(rows){
   });
 });
 
-router.get('/results/:id', function(request, response){
+router.get('/results/project/:id', function(request, response){
   console.log('Request- results');
   console.log("SCHOOL"+request.query.school);
   var searchName=request.query.school;
   var user=Users.getUser(request.params.id, function(user){
-  Data.findNameMatch(request.query.school,function (result) {
+  Data.findNameMatchProject(request.query.school,function (result) {
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html');
+    response.render('results',{result:result,user:user,search:searchName});
+  });
+});
+});
+router.get('/results/attendance/:id', function(request, response){
+  console.log('Request- results');
+  console.log("SCHOOL"+request.query.school);
+  var searchName=request.query.school;
+  var user=Users.getUser(request.params.id, function(user){
+  Data.findNameMatchAttendance(request.query.school,function (result) {
     response.status(200);
     response.setHeader('Content-Type', 'text/html');
     response.render('results',{result:result,user:user,search:searchName});

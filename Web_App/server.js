@@ -38,58 +38,14 @@ app.get('/login', function(request, response){
   response.render('user_details');
 });
 
-app.get('/search/:id', function(request, response){
-  console.log('Request- login');
-  var user= Users.getUser(request.body.email);
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html');
-  response.render('search',{user:user});
-});
 
 
 
 
-/*app.post()
-var data=Users.allUsers(function(rows){
-    var new_user=true;
-    for(var i=0; i<rows.length;i++){
-      if(request.query.email==rows[i]["email"]){
-        new_user=false;
-        if(request.query.key==rows[i]["key"]){
-          var user_data={};
-          user_data.email=rows[i].email;
-          response.status(200);
-          response.setHeader('Content-Type', 'text/html')
-          response.render('', {user:user_data});
-          break;
-        }
-        else{
-          response.status(200);
-          response.setHeader('Content-Type', 'text/html')
-          response.render('error');
-          break;
-        }
-      }
-    }
-    if(new_user){
-      var user=Users.createUser("new","user");
-      console.log(user);
-      response.status(200);
-      response.setHeader('Content-Type', 'text/html');
-      response.render('user_details',{user:user});
-    }
-  });
-});
-*/
 
-app.get('/settings/:id/', function(request,response){
-  console.log('Request- settings');
-  user=Users.getUser(request.params.id);
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('settings',{user:user});
 
-});
+
+
 app.get('/logout', function(request, response){
   console.log('Request- logout');
   response.status(200);

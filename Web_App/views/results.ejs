@@ -31,13 +31,13 @@
               <tr>
                 <th class="top_row">School</th>
                 <th class="top_row">Borough</th>
-                <th class="top_row">Project</th>
+                <th class="top_row">Project or Attendence</th>
               </tr>
               <%for(var i = 0; i< result.length; i++){%>
                 <tr>
                   <td><%=result[i]["name"]%></td>
                   <td><%=result[i]["borough"]%></td>
-                  <td><%=result[i]["description"]%></td>
+                  <td><%=result[i]["data"]%></td>
                 </tr>
               <%}%>
             </table>

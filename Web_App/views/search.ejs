@@ -25,9 +25,18 @@
                 <div class="card h-100">
                    <h4 class="card-header">Search for School</h4>
                    <div class="card-body">
-                      <p class="card-text">Search for school name</p>
-                      <form action="/results/<%=user.email%>" method="get">
-                      <input type="text" id="search_school_name" name="school" required>
+                      <p class="card-text">Search for school attedance by name</p>
+                      <form action="/results/attendance/<%=user.email%>" method="get">
+                      <input type="text" id="search_aschool_name" name="school">
+                   </div>
+                   <div class="card-footer">
+                      <button type="submit" class="btn btn-primary" id="search_school_button">Search</button>
+                   </div>
+                   </form>
+                   <div class="card-body">
+                      <p class="card-text">Search for school project by name</p>
+                      <form action="/results/project/<%=user.email%>" method="get">
+                      <input type="text" id="search_pschool_name" name="school">
                    </div>
                    <div class="card-footer">
                       <button type="submit" class="btn btn-primary" id="search_school_button">Search</button>

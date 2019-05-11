@@ -13,10 +13,27 @@ var doc = new GoogleSpreadsheet('1nWx5MSPoFFttu9KqVhL0naXFff7KVD5BTjWzfQmjJvc');
 
 //exports.findNameMatch("P.S./I.S. 338 - BROOKLYN");
 
-exports.findNameMatch = function (nameSearch,callback) {
+exports.findNameMatchProject = function (nameSearch,callback) {
   console.log("NAME"+nameSearch);
   doc.useServiceAccountAuth(creds, function (err) {
     doc.getRows(3/*sheet of the spreadsheet*/, function (err, rows) {
+      var output  = [];
+      for (var i = 0; i < rows.length; i ++) {
+        if (rows[i].name==nameSearch.trim()) {
+          console.log(rows[i].name);
+          output.push(rows[i]);
+        }
+      }
+      console.log(output);
+      callback(output);
+    });
+  });
+}
+
+exports.findNameMatchAttendance = function (nameSearch,callback) {
+  console.log("NAME"+nameSearch);
+  doc.useServiceAccountAuth(creds, function (err) {
+    doc.getRows(4/*sheet of the spreadsheet*/, function (err, rows) {
       var output  = [];
       for (var i = 0; i < rows.length; i ++) {
         if (rows[i].name==nameSearch.trim()) {
